@@ -1,3 +1,5 @@
+using System.Data.SqlTypes;
+
 namespace Multi_Currency_Money;
 
 public class MultiCurrencyMoneyTestClass
