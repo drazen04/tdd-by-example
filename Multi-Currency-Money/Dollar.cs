@@ -3,19 +3,20 @@
 // Value Object
 public class Dollar
 {
-    public int Amount;
+    private readonly int amount;
 
     public Dollar(int amount)
     {
-        this.Amount = amount;
+        this.amount = amount;
     }
     public Dollar Times(int multiplier)
     {
-        return new Dollar(Amount * multiplier);
+        return new Dollar(amount * multiplier);
     }
 
-    public Boolean Equals(Dollar dollar)
+    public override bool Equals(object? obj)
     {
-        return Amount == dollar.Amount;
+        var dollar = (Dollar) obj;
+        return amount == dollar.amount;
     }
 }
