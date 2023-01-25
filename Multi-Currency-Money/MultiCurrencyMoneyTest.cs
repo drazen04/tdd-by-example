@@ -38,5 +38,7 @@ public class MultiCurrencyMoneyTestClass
     {
         Assert.True(new Dollar(5).Equals(new Dollar(5)));
         Assert.False(new Dollar(5).Equals(new Dollar(6)));
+        Assert.True(new Franc(5).Equals(new Franc(5)));
+        Assert.False(new Franc(5).Equals(new Franc(6)));
     }
 }
