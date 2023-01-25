@@ -1,22 +1,20 @@
 ﻿namespace Multi_Currency_Money;
 
 // Value Object
-public class Dollar
+public class Dollar: Money
 {
-    private readonly int amount;
-
     public Dollar(int amount)
     {
-        this.amount = amount;
+        this.Amount = amount;
     }
     public Dollar Times(int multiplier)
     {
-        return new Dollar(amount * multiplier);
+        return new Dollar(Amount * multiplier);
     }
 
     public override bool Equals(object? obj)
     {
-        var dollar = (Dollar) obj;
-        return amount == dollar.amount;
+        Money money = (Dollar) obj;
+        return Amount == money.Amount;
     }
 }

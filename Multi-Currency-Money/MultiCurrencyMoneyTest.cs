@@ -13,6 +13,9 @@ public class MultiCurrencyMoneyTestClass
      * 7. [] HashCode()
      * 8. [] Equal null
      * 9. [] Equal object
+     * 10. [X] 5 CHF * 2 = 10 CHF
+     * 11. [] Dollar/Franc duplication
+     * 21. [] Common equals
      */
     [Fact]
     public void TestMultiplication()
@@ -20,6 +23,14 @@ public class MultiCurrencyMoneyTestClass
         var five = new Dollar(5);
         Assert.Equal(new Dollar(10), five.Times(2));
         Assert.Equal(new Dollar(15), five.Times(3));
+    }
+    
+    [Fact]
+    public void TestFrancMultiplication()
+    {
+        var five = new Franc(5);
+        Assert.Equal(new Franc(10), five.Times(2));
+        Assert.Equal(new Franc(15), five.Times(3));
     }
     
     [Fact]
