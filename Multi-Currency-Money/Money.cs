@@ -1,27 +1,36 @@
 ﻿namespace Multi_Currency_Money;
 
-public abstract class Money
+public class Money
 {
     protected int Amount;
     protected internal string currency;
 
+    public Money(int amount, string currency)
+    {
+        Amount = amount;
+        this.currency = currency;
+    }
+    
     public override bool Equals(object? obj)
     {
         Money money = (Money) obj;
-        return Amount == money.Amount && GetType() == money.GetType();
+        return Amount == money.Amount && Currency() == money.Currency();
     }
 
     public static Money Dollar(int amount)
     {
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
     
     public static Money Franc(int amount)
     {
-        return new Franc(amount, "CHF");
+        return new Money(amount, "CHF");
     }
 
-    internal abstract Money Times(int multiplier);
+    public Money Times(int multiplier)
+    {
+        return new Money(Amount * multiplier, currency);
+    }
 
     protected internal string Currency()
     {
