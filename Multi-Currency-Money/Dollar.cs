@@ -3,12 +3,15 @@
 // Value Object
 public class Dollar: Money
 {
-    public Dollar(int amount)
+    public Dollar(int amount, String currency)
     {
-        this.Amount = amount;
+        Amount = amount;
+        this.currency = currency;
     }
-    public Dollar Times(int multiplier)
+
+    internal override Money Times(int multiplier)
     {
-        return new Dollar(Amount * multiplier);
+        return Dollar(Amount * multiplier);
     }
+
 }

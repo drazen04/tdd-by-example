@@ -1,14 +1,16 @@
 ﻿namespace Multi_Currency_Money;
 
+// Value Object
 public class Franc : Money
 {
-    public Franc(int amount)
+    public Franc(int amount, String currency)
     {
         Amount = amount;
+        this.currency = currency;
     }
-    
-    public Franc Times(int multiplier)
+
+    internal override Money Times(int multiplier)
     {
-        return new Franc(Amount * multiplier);
+        return Franc(Amount * multiplier);
     }
 }

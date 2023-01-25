@@ -19,30 +19,38 @@ public class MultiCurrencyMoneyTestClass
      * 22. [] Common times
      * 23. [X] Francs != Dollars
      * 24. [] Currency?
+     * 25. [] Delete testFrancMultiplication?
      */
     [Fact]
     public void TestMultiplication()
     {
-        var five = new Dollar(5);
-        Assert.Equal(new Dollar(10), five.Times(2));
-        Assert.Equal(new Dollar(15), five.Times(3));
+        var five = Money.Dollar(5);
+        Assert.Equal(Money.Dollar(10), five.Times(2));
+        Assert.Equal(Money.Dollar(15), five.Times(3));
     }
     
     [Fact]
     public void TestFrancMultiplication()
     {
-        var five = new Franc(5);
-        Assert.Equal(new Franc(10), five.Times(2));
-        Assert.Equal(new Franc(15), five.Times(3));
+        var five = Money.Franc(5);
+        Assert.Equal(Money.Franc(10), five.Times(2));
+        Assert.Equal(Money.Franc(15), five.Times(3));
     }
     
     [Fact]
     public void TestEquality()
     {
-        Assert.True(new Dollar(5).Equals(new Dollar(5)));
-        Assert.False(new Dollar(5).Equals(new Dollar(6)));
-        Assert.True(new Franc(5).Equals(new Franc(5)));
-        Assert.False(new Franc(5).Equals(new Franc(6)));
-        Assert.False(new Franc(5).Equals(new Dollar(5)));
+        Assert.True(Money.Dollar(5).Equals(Money.Dollar(5)));
+        Assert.False(Money.Dollar(5).Equals(Money.Dollar(6)));
+        Assert.True(Money.Franc(5).Equals(Money.Franc(5)));
+        Assert.False(Money.Franc(5).Equals(Money.Franc(6)));
+        Assert.False(Money.Franc(5).Equals(Money.Dollar(5)));
+    }
+
+    [Fact]
+    public void TestCurrency()
+    {
+        Assert.Equal("USD", Money.Dollar(1).Currency());
+        Assert.Equal("CHF", Money.Franc(1).Currency());
     }
 }
