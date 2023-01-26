@@ -1,8 +1,8 @@
 ﻿namespace Multi_Currency_Money;
 
-public class Money
+public class Money : Expression
 {
-    protected int Amount;
+    protected internal int Amount;
     protected internal string currency;
 
     public Money(int amount, string currency)
@@ -35,5 +35,15 @@ public class Money
     protected internal string Currency()
     {
         return currency;
+    }
+
+    public Expression Plus(Money moneyToSum)
+    {
+        return new Sum(this, moneyToSum);
+    }
+
+    public Money Reduce(string to)
+    {
+        return this;
     }
 }
