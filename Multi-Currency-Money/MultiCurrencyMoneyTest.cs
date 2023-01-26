@@ -3,8 +3,7 @@ namespace Multi_Currency_Money;
 public class MultiCurrencyMoneyTestClass
 {
     /**
-     * To do to complete:
-     * [] $5 + 10 CHF = $10 if CHF:USD is 2:1
+     * To do running:
      * [] Return Money from $5 + $5
      * [] Reduce(Bank, string) vs Reduce(string)
      * [] Money rounding?
@@ -14,7 +13,7 @@ public class MultiCurrencyMoneyTestClass
      */
     
     /**
-     * To do completed:
+     * To do done:
      * [X] $5 * 2 = $10
      * [X] Make “amount” private
      * [X] Dollar side-effects?
@@ -28,7 +27,8 @@ public class MultiCurrencyMoneyTestClass
      * [X] Delete testFrancMultiplication?
      * [X] Bank.Reduce(Money)
      * [X] $5 + $5 = $10
-     * [X] Reduce Money with conversion 
+     * [X] Reduce Money with conversion
+     * [X] $5 + 10 CHF = $10 if CHF:USD is 2:1
      */
     [Fact]
     public void TestMultiplication()
@@ -114,5 +114,15 @@ public class MultiCurrencyMoneyTestClass
     public void TestIdentityRate()
     {
         Assert.Equal(1, new Bank().Rate("USD", "USD"));
+    }
+
+    [Fact]
+    public void TestMixedAddition()
+    {
+        Expression tenFranc = Money.Franc(10);
+        Expression fiveBucks = Money.Dollar(5);
+        var bank = new Bank();
+        var result = bank.Reduce(fiveBucks.Plus(tenFranc), "USD");
+        Assert.Equal(Money.Dollar(10), result);
     }
 }

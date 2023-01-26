@@ -27,7 +27,7 @@ public class Money : Expression
         return new Money(amount, "CHF");
     }
 
-    public Money Times(int multiplier)
+    public Expression Times(int multiplier)
     {
         return new Money(Amount * multiplier, currency);
     }
@@ -37,14 +37,22 @@ public class Money : Expression
         return currency;
     }
 
-    public Expression Plus(Money moneyToSum)
+    public Expression Plus(Expression addend)
     {
-        return new Sum(this, moneyToSum);
+        return new Sum(this, addend);
     }
 
     public Money Reduce(Bank bank, string to)
     {
         var rate = bank.Rate(currency, to);
         return new Money(Amount / rate, to);
+    }
+
+    public override string ToString()
+    {
+        return $@"Money {{ 
+amount = {Amount}
+currency = {currency}
+}}";
     }
 }

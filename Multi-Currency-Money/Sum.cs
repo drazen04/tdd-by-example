@@ -2,10 +2,10 @@
 
 public class Sum : Expression
 {
-    public readonly Money Augent;
-    public readonly Money Addend;
+    public readonly Expression Augent;
+    public readonly Expression Addend;
 
-    public Sum(Money augent, Money addend)
+    public Sum(Expression augent, Expression addend)
     {
         Augent = augent;
         Addend = addend;
@@ -13,7 +13,12 @@ public class Sum : Expression
 
     public Money Reduce(Bank bank, string to)
     {
-        var amount = Augent.Amount + Addend.Amount;
+        var amount = Augent.Reduce(bank, to).Amount + Addend.Reduce(bank, to).Amount;
         return new Money(amount, to);
+    }
+
+    public Expression Plus(Expression addend)
+    {
+        return null;
     }
 }
