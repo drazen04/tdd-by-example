@@ -2,7 +2,7 @@
 A test framework for didactic purpose.
 
 ## todo-list
-- [ ] Invoke test method
+- [x] Invoke test method
 - [ ] invoke setUp first
 - [ ] Invoke tearDown afterward
 - [ ] Invoke tearDown even if the test method fails
