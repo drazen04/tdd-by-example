@@ -6,7 +6,7 @@ public class MultiCurrencyMoneyTestClass
      * To do to complete:
      * [] $5 + 10 CHF = $10 if CHF:USD is 2:1
      * [] Return Money from $5 + $5
-     * [] Reduce Money with conversion 
+     * [] Reduce(Bank, string) vs Reduce(string)
      * [] Money rounding?
      * [] HashCode()
      * [] Equal null
@@ -28,6 +28,7 @@ public class MultiCurrencyMoneyTestClass
      * [X] Delete testFrancMultiplication?
      * [X] Bank.Reduce(Money)
      * [X] $5 + $5 = $10
+     * [X] Reduce Money with conversion 
      */
     [Fact]
     public void TestMultiplication()
@@ -93,5 +94,25 @@ public class MultiCurrencyMoneyTestClass
         var bank = new Bank();
         var result = bank.Reduce(Money.Dollar(1), "USD");
         Assert.Equal(Money.Dollar(1), result);
+    }
+        
+    [Fact]
+    public void TestReduceMoneyDifferentCurrency()
+    {
+        var bank = new Bank();
+        var result = bank.Reduce(Money.Franc(2), "USD");
+        Assert.Equal(Money.Dollar(1), result);
+    }
+            
+    [Fact]
+    public void TestArrayEqual()
+    {
+        Assert.Equal(new List<string>(){"abc"}, new List<string>(){"abc"});
+    }
+            
+    [Fact]
+    public void TestIdentityRate()
+    {
+        Assert.Equal(1, new Bank().Rate("USD", "USD"));
     }
 }
