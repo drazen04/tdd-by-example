@@ -14,6 +14,8 @@ class TestCase:
             self.tearDown()
         except:
             result.testFailed()
+        finally:
+            self.tearDown()
         return result
     def tearDown(self):
         pass

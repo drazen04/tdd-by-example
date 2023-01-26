@@ -5,7 +5,7 @@ A test framework for didactic purpose.
 - [x] Invoke test method
 - [x] invoke setUp first
 - [x] Invoke tearDown afterward
-- [ ] Invoke tearDown even if the test method fails
+- [x] Invoke tearDown even if the test method fails
 - [ ] Run multiple tests
 - [x] Report collected results
 - [x] Log string in WasRun
