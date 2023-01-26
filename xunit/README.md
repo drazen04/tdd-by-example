@@ -8,4 +8,4 @@ A test framework for didactic purpose.
 - [ ] Invoke tearDown even if the test method fails
 - [ ] Run multiple tests
 - [ ] Report collected results
-- [ ] Log string in WasRun
+- [x] Log string in WasRun
